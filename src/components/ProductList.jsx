@@ -9,7 +9,7 @@ const ProductList = () => {
   }, []);
   async function fetchProducts() {
     try {
-      const response = await axios.get("/api/products");
+      const response = await axios.get("http://localhost:8081/api/products");
       console.log(response.data); // Access the data property
       setProducts(response.data);
     } catch (error) {
