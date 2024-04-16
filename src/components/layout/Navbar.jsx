@@ -1,8 +1,13 @@
-// Navbar.js
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 function Navbar() {
+  const { token, logout, checkToken } = useContext(AuthContext);
+
+  useEffect(() => {
+    checkToken();
+  }, []);
   return (
     <nav className='bg-gray-800'>
       <div className='container mx-auto px-4'>
@@ -25,15 +30,38 @@ function Navbar() {
             <Link to='/cart' className='ml-4 text-white hover:text-gray-300'>
               Cart
             </Link>
-            <Link to='/login' className='ml-4 text-white hover:text-gray-300'>
-              Login
-            </Link>
-            <Link
-              to='/register'
-              className='ml-4 text-white hover:text-gray-300'
-            >
-              Register
-            </Link>
+            {token ? (
+              <>
+                <a
+                  href='/'
+                  onClick={logout}
+                  className='ml-4 text-white hover:text-gray-300'
+                >
+                  Logout
+                </a>
+                <Link
+                  to='/dashboard'
+                  className='ml-4 text-white hover:text-gray-300'
+                >
+                  Dashboard
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to='/login'
+                  className='ml-4 text-white hover:text-gray-300'
+                >
+                  Login
+                </Link>
+                <Link
+                  to='/register'
+                  className='ml-4 text-white hover:text-gray-300'
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
