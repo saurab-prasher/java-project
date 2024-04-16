@@ -9,39 +9,43 @@ function Navbar() {
     checkToken();
   }, []);
   return (
-    <nav className='bg-gray-800'>
-      <div className='container mx-auto px-4'>
-        <div className='flex items-center justify-between h-16'>
-          <div className='flex items-center'>
-            <Link to='/' className='text-white font-bold'>
+    <nav className="bg-gray-800">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="text-white font-bold">
               Home
             </Link>
             <Link
-              to='/products'
-              className='ml-4 text-white hover:text-gray-300'
+              to="/products"
+              className="ml-4 text-white hover:text-gray-300"
             >
               Browse Products
             </Link>
           </div>
-          <div className='flex items-center'>
-            <Link to='/checkout' className='text-white hover:text-gray-300'>
+          <div className="flex items-center">
+            <Link to="/checkout" className="text-white hover:text-gray-300">
               Checkout
             </Link>
-            <Link to='/cart' className='ml-4 text-white hover:text-gray-300'>
+            <Link to="/cart" className="ml-4 text-white hover:text-gray-300">
               Cart
+            </Link>
+            {""}
+            <Link to="/orders" className="ml-4 text-white hover:text-gray-300">
+              Order List
             </Link>
             {token ? (
               <>
                 <a
-                  href='/'
+                  href="/"
                   onClick={logout}
-                  className='ml-4 text-white hover:text-gray-300'
+                  className="ml-4 text-white hover:text-gray-300"
                 >
                   Logout
                 </a>
                 <Link
-                  to='/dashboard'
-                  className='ml-4 text-white hover:text-gray-300'
+                  to="/dashboard"
+                  className="ml-4 text-white hover:text-gray-300"
                 >
                   Dashboard
                 </Link>
@@ -49,14 +53,14 @@ function Navbar() {
             ) : (
               <>
                 <Link
-                  to='/login'
-                  className='ml-4 text-white hover:text-gray-300'
+                  to="/login"
+                  className="ml-4 text-white hover:text-gray-300"
                 >
                   Login
                 </Link>
                 <Link
-                  to='/register'
-                  className='ml-4 text-white hover:text-gray-300'
+                  to="/register"
+                  className="ml-4 text-white hover:text-gray-300"
                 >
                   Register
                 </Link>
