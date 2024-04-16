@@ -1,15 +1,11 @@
-import "./App.css";
-import AddProductForm from "./components/AddProductForm";
-import ProductList from "./components/ProductList";
-
-function App() {
+import Layout from "./components/layout/Layout";
+import { Outlet } from "react-router-dom";
+export default function App() {
   return (
-    <div className='App'>
-      <h1>Product Management</h1>
-      <AddProductForm />
-      <ProductList />
-    </div>
+    <>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </>
   );
 }
-
-export default App;

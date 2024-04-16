@@ -20,7 +20,7 @@ const AddProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/api/products", product); // Adjust the API URL as needed
+    await axios.post("http://localhost:8081/api/products", product); // Adjust the API URL as needed
     // Optionally reset form or give user feedback
   };
 
