@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import { redirect } from "react-router-dom";
 
 const LoginForm = () => {
   const { login, logout } = useContext(AuthContext);
@@ -25,6 +26,8 @@ const LoginForm = () => {
       const token = response.data.token;
       // You can store the token in localStorage or sessionStorage for future use
       localStorage.setItem("token", token);
+      // Redirect to home page
+      redirect("/login");
     } catch (error) {
       // If authentication fails, display the error message
       setError("Invalid username or password");
@@ -33,41 +36,41 @@ const LoginForm = () => {
   };
 
   return (
-    <div className='max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-xl'>
-      <h2 className='text-2xl font-semibold mb-4'>Login</h2>
+    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-xl">
+      <h2 className="text-2xl font-semibold mb-4">Login</h2>
       <form onSubmit={handleSubmit}>
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Username:
           </label>
           <input
-            className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
-            type='text'
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Password:
           </label>
           <input
-            className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
-            type='password'
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
         <button
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-          type='submit'
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
         >
           Login
         </button>
       </form>
-      {error && <div className='text-red-500 mt-2'>{error}</div>}
+      {error && <div className="text-red-500 mt-2">{error}</div>}
     </div>
   );
 };
